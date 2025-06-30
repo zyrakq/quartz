@@ -2,12 +2,19 @@
 tags:
   - inbox
   - archlinux/videocards
-sr-due: 2024-09-18
-sr-interval: 19
-sr-ease: 290
+sr-due: 2025-09-15
+sr-interval: 305
+sr-ease: 310
 created: 2024-08-23T20:59:42+03:00
-modified: 2024-10-19T11:47:06+03:00
+modified: 2024-11-14T21:49:08+03:00
 publish: true
+categories:
+  - amd
+  - mesa
+  - vulkan
+  - videodrivers
+  - videocards
+  - archlinux
 ---
 ### Устанавливаем
 

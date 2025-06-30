@@ -2,33 +2,59 @@
 tags:
   - inbox
   - orangepi5/archlinux
-sr-due: 2025-05-19
-sr-interval: 211
+sr-due: 2026-11-02
+sr-interval: 612
 sr-ease: 290
 created: 2024-08-02T21:42:07+03:00
-modified: 2024-10-20T11:30:27+03:00
+modified: 2025-04-26T14:02:42+03:00
 publish: true
+categories:
+  - orangepi5
+  - archlinux
+  - dd
+  - mount
+  - gzip
+  - wget
+  - balena
+  - 7ji
+  - fstab
 ---
-
+[Репозиторий с образом](https://github.com/7Ji/orangepi5-archlinuxarm)
 ### Установка
 
-[GitHub - 7Ji/orangepi5-archlinuxarm: ArchLinuxARM for OrangePi 5 / 5B / 5 plus with vendor kernel](https://github.com/7Ji/orangepi5-archlinuxarm)
+#### Записываем образ на основной диск
 
-Записываем образ 5.img с помощью [[BalenaEtcher]] на будущий носитель OS
+Записываем образ `5.img` с помощью *BalenaEtcher* на будущий носитель ОС.
 
-Можем удалить первые три раздела на носителе с OS
+Нужно удалить третий раздел на основном диске.
 
-Увеличиваем объем основного диска и создаем дополнительный раздел home. Копируем uuid раздела home.
+#### Добавляем раздел с пользователями
 
-Монтируем OS:
+Далее увеличиваем размер с ОС и создаем дополнительный раздел *Home* на основном диске. Копируем *UUID* раздела *Home*.
+
+Монтируем раздел с ОС:
 
 ```sh
 mount /dev/<device> /mnt
 ```
 
+В моем случае это `sda4`.
+
+Переименовываем папку на время:
+
 ```sh
 sudo mv /mnt/home /mnt/home_old
+```
+
+Создаем новую папку:
+
+```sh
 sudo mkdir /mnt/home
+```
+
+Добавлеяем монтирование раздела при старте:
+
+```sh
 sudo nano /mnt/etc/fstab
 ```
 
@@ -36,32 +62,62 @@ sudo nano /mnt/etc/fstab
 UUID=<uuid> /home ext4 rw,noatime 0 2
 ```
 
+Монтируем и переносим папки пользователей на новый раздел:
+
 ```sh
-mount /dev/<device> /mnt/home
-sudo mv /mnt/home_old/* /mnt/home/
-sudo rm -Rf /mnt/home_old
-umount -R /mnt
+sudo mount /dev/<device> /mnt/home
 ```
 
-Записываем с помощью [[BalenaEtcher]] образ 5.img на загрузочный флеш накопитель и удаляем последний раздел с OS
+```sh
+sudo mv /mnt/home_old/* /mnt/home/
+```
 
-- [[Шпаргалка по работе с пользователями в Linux|Cоздайте пользователя]]
-- [[Исправление проблем с терминалом kitty при работе по ssh|Если пользуетесь kitty, установите пакет исправляющий баг дублирования текста]]
-- [[SSH|Настройте удаленный доступ по ssh]]
+Удаляем уже не нужную папку и размонтируем диск:
 
-Переименовать устройство:
+```sh
+sudo rm -Rf /mnt/home_old
+```
+
+```sh
+sudo umount -R /mnt
+```
+
+#### Создаем загрузочную CD флешку
+
+Записываем с помощью *BalenaEtcher* образ `5.img` на загрузочный флеш накопитель и удаляем последний раздел с ОС. 
+
+> [!faq] 
+> Делаем мы это потому, что *Orange Pi 5* не загружает ни с чего кроме как с *CD карты*. *boot* раздел должнен быть на ней. А вот первый раздел можно перенести в *SPI*, хотя это и имеет мало смысла.
+
+> [!tip] 
+> В будущем вы возможно захотите попробывать разные версии ядер от разных разработчиков, поэтому стоит сразу увеличить размер *boot* раздела.
+### Настройка
+
+#### Обновляем пакеты и ядро
+
+```sh
+sudo pacman -Syu
+```
+
+> [!attention] 
+> Без обновления попытки установить новые пакеты могут завершиться с ошибками
+
+> [!fail] 
+> В случае, если репозитории *Arch Linux* недоступны из за блокировок, то можно настроить прокси-сервер и [[Настройка проксирования трафика приложений в Linux|проксировать]] через него запросы от *pacman*. Вот один из [[Настройка amneziawg vpn клиента как прокси-сервер в docker|вариантов]] настройки прокси-сервера.
+
+#### Переименуем устройство
 
 ```sh
 sudo nano /etc/hostname
 ```
 
-Установите часовой пояс:
+#### Установим часовой пояс
 
 ```sh
 sudo ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 ```
 
-Установите местную кодировку:
+#### Установим местную кодировку
 
 ```sh
 sudo nano /etc/locale.gen
@@ -71,38 +127,52 @@ sudo nano /etc/locale.gen
 sudo locale-gen
 ```
 
-Синхронизируйте время:
+#### Синхронизируем время
 
 ```sh
 sudo hwclock --systohc
 ```
 
-Проверьте:
+Проверяем:
 
 ```sh
 timedatectl
 ```
 
-- [[Установка zsh и oh my zsh|Устанавливаем zsh и oh my zsh]]
-- [[Настройка ssh-agent on Arch Linux|Настройте ssh-agent]]
-- [[VSCode SSH Remote|Настройте VSCode Server]]
-- [[Шпаргалка по yay|Установите yay]]
+---
 
-### Исправляем возможные проблемы
+- [[Шпаргалка по работе с пользователями в Arch Linux]]
+- [[Исправление проблем с терминалом kitty при работе по ssh]]
+- [[Шпаргалка по ssh]]
+
+---
+
+- [[Установка zsh и oh my zsh]]
+- [[Настройка ssh-agent on Arch Linux]]
+- [[Настройка VSCode Remote - SHH]]
+- [[Шпаргалка по yay]]
+
+---
+
+[[Установка Hyprland на Arch Linux для Orange Pi 5]]
+
+---
+### Связанные материалы
+
+[[Установка статического MAC адреса вместо динамического]]
 
 [[Исправление прерывания ssh-туннеля в Linux]]
 
-[[Как исправить проблему с Hyprland для Orange Pi 5]]
+[[Исправление кодеков для Chromium в Orange Pi 5 на Arch Linux]]
 
-[[Как настроить кодеки для Orange Pi 5 на Arch Linux]]
+[[Шпаргалка по SPI]]
+
+[[Смена ядра Linux при старте системы в Orange Pi 5 на Arch Linux]]
 
 ### Ссылки
 
-Также могут пригодиться ссылки на другия связанные репозитории для будущей доработке инструкции:
+[Загрузчик](https://github.com/7Ji/orangepi5-rkloader)
 
-[GitHub - 7Ji/orangepi5-rkloader: Automatical builds of RK bootloader for Orangepi 5 / 5B / 5 plus](https://github.com/7Ji/orangepi5-rkloader) - лоадер ОС.
+[Предустоновленный репозиторий от автора сборки](https://github.com/7Ji/archrepo) 
 
-[GitHub - 7Ji/archrepo: A pacman repo focusing on Arch as media center, for ArchLinux on x86\_64 and ArchLinux ARM on aarch64, updated hourly](https://github.com/7Ji/archrepo) - репозиторий с пакетами для arm от автора. Уже стоит в этом образе.
-
-[GitHub - 7Ji/arch\_repo\_builder: A naive Arch repo builder, for AUR-like packages](https://github.com/7Ji/arch_repo_builder) - решение для создания своего репозитория.
-
+[Решение для создания персонального репозитория](https://github.com/7Ji/arch_repo_builder)

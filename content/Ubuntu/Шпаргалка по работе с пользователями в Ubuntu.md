@@ -4,11 +4,11 @@ tags:
   - ubuntu
 cssclasses:
   - clean-embeds
-sr-due: 2024-09-17
-sr-interval: 18
-sr-ease: 294
+sr-due: 2025-09-20
+sr-interval: 310
+sr-ease: 314
 created: 2024-08-25T03:59:20+03:00
-modified: 2024-10-19T11:34:51+03:00
+modified: 2024-11-20T17:22:04+03:00
 publish: true
 ---
 ### Добавляем группу sudo

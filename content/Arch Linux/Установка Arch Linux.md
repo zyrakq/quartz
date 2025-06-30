@@ -8,8 +8,10 @@ sr-ease: 270
 cssclasses:
   - clean-embeds
 created: 2024-05-15T20:52:41+03:00
-modified: 2024-10-20T11:34:08+03:00
+modified: 2024-12-07T18:14:37+03:00
 publish: true
+categories:
+  - archlinux
 ---
 [[Шпаргалка по Pacman]]
 ## Установка
@@ -142,7 +144,7 @@ mkdir /mnt/boot
 ```
 
 ```sh
-mkdir /mnt/EFI
+mkdir /mnt/boot/EFI
 ```
 
 ```sh
@@ -237,7 +239,7 @@ FONT=cyr-sun16
 #### Устанавливаем имя компьютера
 
 ```sh
-nano /etchostname
+nano /etc/hostname
 ```
 
 Пишем имя компьютера, как пример:

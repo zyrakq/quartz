@@ -3,12 +3,16 @@ tags:
   - inbox
   - archlinux/videocards
   - linux/videocards
-sr-due: 2025-05-13
-sr-interval: 205
+sr-due: 2026-10-10
+sr-interval: 636
 sr-ease: 310
 created: 2024-08-27T16:17:26+03:00
-modified: 2024-10-20T11:35:13+03:00
+modified: 2025-01-12T02:48:26+03:00
 publish: true
+categories:
+  - videocards
+  - videodrivers
+  - thunderbolt
 ---
 Для проверки поддержки Thunderbolt в USB-разъемах на Linux можно использовать несколько команд:
 

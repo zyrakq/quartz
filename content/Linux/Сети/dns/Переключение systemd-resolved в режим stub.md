@@ -9,7 +9,7 @@ sr-due: 2025-04-28
 sr-interval: 190
 sr-ease: 270
 created: 2024-08-10T07:56:32+03:00
-modified: 2024-10-20T11:19:24+03:00
+modified: 2025-06-30T17:42:19+03:00
 publish: true
 ---
 [[Установка systemd-resolved в Arch Linux]]

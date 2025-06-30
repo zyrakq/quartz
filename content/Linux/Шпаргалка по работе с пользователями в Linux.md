@@ -8,7 +8,7 @@ sr-interval: 226
 sr-ease: 310
 publish: true
 created: 2024-05-15T20:52:41+03:00
-modified: 2024-10-20T11:31:09+03:00
+modified: 2025-05-20T07:28:02+03:00
 ---
 ### Основные команды по работе с пользователями
 
@@ -73,7 +73,17 @@ killall -u <user>
 getent passwd | grep <user>
 ```
 
+#### Отключение блокировки пользователя
 
+При вводе пароля более трез раз неправильно, аккаунт блокируется на 10 минут. Чтобы разблокировать выполните:
+
+```sh
+su
+```
+
+```sh
+sudo faillock --user <username> --reset
+```
 ### Ссылки
 
 [How to Create Users in Linux (useradd Command) | Linuxize](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/)

@@ -3,12 +3,18 @@ tags:
   - obsidian
   - inbox
 created: 2024-10-23T00:24:10+03:00
-modified: 2024-10-24T07:19:01+03:00
+modified: 2024-10-24T09:30:48+03:00
 publish: true
-sr-due: 2024-10-24
-sr-interval: 1
-sr-ease: 230
+sr-due: 2024-10-26
+sr-interval: 2
+sr-ease: 210
 ---
+Перед этим выполните:
+
+[[Настройка публикации заметок в Quartz]]
+
+---
+
 Пример стиля для сайта на Quartz: [be-far's Digital Garden](https://be-far.com/)
 ### Смена цвета фона
 
@@ -301,4 +307,8 @@ const config: QuartzConfig = {
 **lazyLoad**: Если <mark style="background: #FFB8EBA6;">true</mark>, добавляет ленивую загрузку к элементам ресурсов (img, video и т. д.) для повышения производительности загрузки страницы. По умолчанию <mark style="background: #FFB8EBA6;">false</mark>.
 
 [CrawlLinks](https://quartz.jzhao.xyz/plugins/CrawlLinks)
+
+---
+
+Далее можно приступить к [[Развертывание Quartz|настройке развертывания Quartz]].
 

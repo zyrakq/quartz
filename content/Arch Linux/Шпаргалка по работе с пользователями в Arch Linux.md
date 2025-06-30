@@ -4,12 +4,16 @@ tags:
   - archlinux
 cssclasses:
   - clean-embeds
-sr-due: 2024-09-19
-sr-interval: 20
-sr-ease: 294
+sr-due: 2025-09-19
+sr-interval: 309
+sr-ease: 314
 created: 2024-08-25T03:58:21+03:00
-modified: 2024-10-19T11:39:58+03:00
+modified: 2025-06-08T04:57:23+03:00
 publish: true
+categories:
+  - users
+  - archlinux
+  - sudo
 ---
 ### Добавляем группу sudo
 

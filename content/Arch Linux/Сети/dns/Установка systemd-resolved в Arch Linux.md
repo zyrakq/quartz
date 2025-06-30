@@ -6,7 +6,7 @@ sr-due: 2024-10-29
 sr-interval: 9
 sr-ease: 230
 created: 2024-08-25T11:23:38+03:00
-modified: 2024-10-20T11:21:50+03:00
+modified: 2025-06-30T16:21:12+03:00
 publish: true
 ---
 ### Устанавливаем systemd-resolved

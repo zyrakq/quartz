@@ -7,7 +7,7 @@ sr-due: 2024-10-10
 sr-interval: 37
 sr-ease: 270
 created: 2024-08-05T14:03:52+03:00
-modified: 2024-10-19T11:15:18+03:00
+modified: 2025-04-26T14:01:53+03:00
 cssclasses:
   - clean-embeds
 publish: true
@@ -37,6 +37,12 @@ sudo nmcli connection down <имя_соединения>
 sudo nmcli connection edit <имя_соединения>
 ```
 
+Также редактировать можно еще и таким способом:
+
+```sh
+sudo nano /etc/NetworkManager/system-connections/<name>.nmconnection
+```
+
 #### Удаляем соединение
 
 ```sh
@@ -63,3 +69,6 @@ sudo nmcli connection modify <имя_соединения> secondaries <guid_vpn
 ```
 
 [Network-Manager и автоподнятие openvpn соединения клиента? — Хабр Q&A](https://qna.habr.com/q/658564)
+### Связанные материалы
+
+[[Установка статического MAC адреса вместо динамического]]

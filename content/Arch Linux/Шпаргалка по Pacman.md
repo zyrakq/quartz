@@ -1,6 +1,6 @@
 ---
 created: 2024-05-31T18:24:26+03:00
-modified: 2024-10-19T12:37:32+03:00
+modified: 2025-03-28T16:42:36+03:00
 tags:
   - archlinux
   - inbox

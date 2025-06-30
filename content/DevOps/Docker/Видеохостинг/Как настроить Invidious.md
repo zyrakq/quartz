@@ -1,13 +1,19 @@
 ---
 tags:
   - inbox
-  - devops/docker/services
+  - devops/docker/services/video-hosting
 sr-due: 2024-10-03
 sr-interval: 34
 sr-ease: 290
 created: 2024-08-20T23:02:23+03:00
-modified: 2024-10-19T11:37:04+03:00
+modified: 2025-02-12T12:41:31+03:00
 publish: true
+categories:
+  - invidious
+  - youtube
+  - docker
+  - orangepi5
+  - video-hosting
 ---
 ### Развернем Invidious
 
